@@ -28,29 +28,3 @@ print(b[2:5])  # njo
 print(b[:5])  # Bonjo
 print(b[2:])  # njour Vietnam
 print(b[-5:-2])  # etn
-
-# 5. MODIFY STR
-# str.upper() - returns the string in upper case
-print(b.upper())  # BONJOUR VIETNAM
-# str.lower()
-print(b.lower())  # bonjour vietnam
-# str.strip() - remove white space
-c = "    Bonjour Vietnam!  "
-print(c.strip())  # Bonjour Vietnam!
-# str.replace() - replace a str with another str
-print(b.replace("V", "Z"))  # Bonjour Zietnam
-# str.split() - splits the string into substrings
-d = "Xin chao, Vietnam"
-print(d.split(","))  # ['Xin chao', ' Vietnam']
-
-# more str methods
-# str.capitalize() - 1st char in 1st word of the sentence is upper case (the rest is lower case)
-text1 = "hello and welcome to Vietnam"
-x = text1.capitalize()
-print(x)  # Hello and welcome to vietnam
-text2 = "welcome to VIETNAM"
-y = text2.capitalize()
-print(y)  # Welcome to vietnam
-text3 = "84 is my id"
-z = text3.capitalize()
-print(z)  # 84 is my id
