@@ -8,16 +8,37 @@ print(b.upper())  # BONJOUR VIETNAM
 # str.LOWER()
 print(b.lower())  # bonjour vietnam
 
-# str.STRIP() - remove white space
+# string.strip(characters-optional) - remove white space
 c = "    Bonjour Vietnam!  "
 print(c.strip())  # Bonjour VietFnam!
+txt_st = ",,,,,rrttgg.....banana....rrr"
+st = txt_st.strip(",.grt")
+print(st)  # banana
 
-# str.REPLACE() - replace a str with another str
+# str.REPLACE(oldvalue, newvalue, count) - replace a str with another str
+# Note: All occurrences of the specified phrase will be replaced, if nothing else is specified.
 print(b.replace("V", "Z"))  # Bonjour Zietnam
 
-# str.SPLIT() - splits the string into substrings
+txtrep = "one one was a race horse, two two was one too."
+rep1 = txtrep.replace(
+    "one", "THREE"
+)  # THREE THREE was a race horse, two two was THREE too.
+rep2 = txtrep.replace(
+    "one", "THREE", 2
+)  # THREE THREE was a race horse, two two was one too.
+print(rep1)
+print(rep2)
+
+# string.SPLIT(separator-optional, maxsplit- optional) - splits the string into substrings
 d = "Xin chao, Vietnam"
 print(d.split(","))  # ['Xin chao', ' Vietnam']
+
+txt_sp = "apple#banana#cherry#orange"
+sp1 = txt_sp.split("#")
+print(sp1)  # ['apple', 'banana', 'cherry', 'orange']
+# setting the maxsplit parameter to 1, will return a list with 2 elements!
+sp2 = txt_sp.split("#", 1)
+print(sp2)  # ['apple', 'banana#cherry#orange']
 
 # more str methods
 # str.CAPITALIZE() - 1st char in 1st word of the sentence is upper case (the rest is lower case)
@@ -51,6 +72,13 @@ print(x3)  # 8
 print(txt1.find("q"))  # -1
 # print(txt1.index("q"))  # ValueError: substring not found
 
+# string.INDEX(value, start, end) - find the first occurrence of the specified value
+txt_in = "Hello, welcome to my world."
+x_in1 = txt_in.index("e")
+print(x_in1)  # 1
+x_in2 = txt_in.index("e", 5, 10)
+print(x_in2)  # 8
+
 # str.FORMAT(value1, value2...)
 # formats the specified value(s) and insert them inside the string's placeholder {}.
 # returns the formatted string
@@ -74,3 +102,53 @@ print(txt4.format(0.046))  # The interest rate for 6 months is 4.600000%.
 txt5 = "The interest rate for 6 months is {:.0%}."
 print(txt5.format(0.046))  # The interest rate fFor 6 months is 5%.
 print(txt5.format(0.045))  # The interest rate for 6 months is 4%.
+
+# string.ISALPHA() - returns True if all the characters are alphabet letters (a-z)
+txt_isal1 = "CompanyX"
+txt_isal2 = "Company10"
+print(txt_isal1.isalpha())  # True
+print(txt_isal2.isalpha())  # False
+
+# string.ISNUMERIC() - returns True if all the characters are numeric (0-9), otherwise False
+# Exponents, like ² and ¾ = numeric values.
+# "-1" and "1.5" are NOT considered numeric values,
+# because all the characters in the string must be numeric, and the - and the . are not.
+a = "\u0030"  # unicode for 0
+b = "\u00B2"  # unicode for ²
+c = "10km2"
+d = "-1"
+e = "1.5"
+f = "12345"
+
+print(a.isnumeric())  # True
+print(b.isnumeric())  # True
+print(c.isnumeric())  # False
+print(d.isnumeric())  # False
+print(e.isnumeric())  # False
+print(f.isnumeric())  # True
+
+# string.ISALNUM() - returns True if all the characters are alphanumeric - (a-z) and (0-9)
+txt_isan1 = "Vietnam84"
+txt_isan2 = "Vietnam 84"
+print(txt_isan1.isalnum())  # True
+print(txt_isan2.isalnum())  # False
+
+# string.JOIN(iterable) - takes all items in an iterable and joins them into one str
+myTuple = ("John", "Peter", "Vicky")
+mtj = "#".join(myTuple)
+print(mtj)  # John#Peter#Vicky
+# Note: When using a dictionary as an iterable, the returned values are the keys, not the values.
+myDict = {"name": "John", "country": "Norway"}
+mySeparator = "TEST"
+mdj = mySeparator.join(myDict)
+print(mdj)  # nameTESTcountry
+
+# string.title() - returns a string where the first character in every word is upper case
+# if number+Str --> the first letter after that will be converted to upper case.
+txt_tt = "Welcome to my 2nd world"
+tt = txt_tt.title()
+print(tt)  # Welcome To My 2Nd World
+# the first letter after a non-alphabet letter is converted into a upper case letter
+txt_tt1 = "hello b2b2b2 and 3g3g3g"
+tt1 = txt_tt1.title()
+print(tt1)  # Hello B2B2B2 And 3G3G3G
